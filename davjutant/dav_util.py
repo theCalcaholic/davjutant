@@ -54,7 +54,7 @@ def clean_calendar(calendar: caldav.Calendar):
 
 
 def clean_event(event: icalendar.Event):
-    dirty = 'ORGANIZER' in event or event.get('attendee', False) or any(map(lambda comp: comp.name == "VALARM", event.subcomponents))
+    dirty = 'ORGANIZER' in event or event.get('ATTENDEE', False) or any(map(lambda comp: comp.name == "VALARM", event.subcomponents))
     if 'ORGANIZER' in event:
         del event["ORGANIZER"]
     event["ATTENDEE"] = []

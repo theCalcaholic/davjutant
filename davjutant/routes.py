@@ -68,9 +68,11 @@ def prune_event():
             logger.info("No VEVENT object found!")
             return Response('Invalid request', 400)
         if clean_event(cal_event):
-            logger.info(f"Event needs cleaning. Applying changes...")
+            logger.info("Event needs cleaning. Applying changes...")
             try:
                 vevent.save(no_create=True)
+                logger.info("Changes have been saved.")
+                return "Event has been successfully cleaned"
             except PutError:
                 logger.info(f"Error writing changes. Potential permission issue...")
                 traceback.print_exc()
@@ -80,6 +82,6 @@ def prune_event():
             return 'success'
 
     msg = 'Event was not found in accessible calendars'
-    print(msg)
+    logger.info(msg)
     return Response(msg, 200)
 
