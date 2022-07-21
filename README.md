@@ -20,6 +20,7 @@ export CALDAV_USER="my-caldav-user"
 export CALDAV_PASSWORD="my-caldav-password"
 export PORT="80" #optional
 export ADDRESS="0.0.0.0" #optional
+export WEBHOOKS_SECRET="my-shared-secret" #optional
 python main.py
 ```
 

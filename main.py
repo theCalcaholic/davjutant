@@ -4,6 +4,7 @@ import caldav
 import vobject
 from caldav.lib.error import NotFoundError, PutError
 import icalendar
+import hashlib
 from flask import Flask, request, Response
 
 caldav_url = os.environ['CALDAV_URL']
@@ -44,6 +45,12 @@ def clean_event(event: icalendar.Event):
 
 @app.route('/dav/prune/event', methods=['POST'])
 def prune_event():
+    if 'WEBHOOKS_SECRET' in os.environ:
+        m = hashlib.sha256()
+        m.update(request.data + os.environ['WEBHOOKS_SECRET'].encode())
+        if request.headers.get('X-Nextcloud-Webhooks', None) != m.hexdigest():
+            return Response('Unauthorized', 401)
+        print("Authorization successful!")
     payload = request.json
     user = payload['calendarData']['principaluri'].split('/')[-1]
     calendar_uri = payload['calendarData']['uri']
