@@ -23,7 +23,7 @@ export ADDRESS="0.0.0.0" #optional
 python main.py
 ```
 
-Meant to be used with https://github.com/kffl/nextcloud-webhooks. Configure it as such:
+Meant to be used with https://github.com/kffl/nextcloud-webhooks. Configure it like this:
 
 ```php
 # config.php
