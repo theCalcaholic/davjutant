@@ -32,6 +32,7 @@ Meant to be used with https://github.com/kffl/nextcloud-webhooks. Configure it l
 // ...
   'webhooks_calendar_object_created_url' => 'http://davjutant-address:80/prune/event',
   'webhooks_calendar_object_updated_url' => 'http://davjutant-address:80/prune/event'
+  'webhooks_secret' => 'my-shared-secret',
 // ...
 }
 ```
