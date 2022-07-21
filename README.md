@@ -23,4 +23,14 @@ export ADDRESS="0.0.0.0" #optional
 python main.py
 ```
 
-Meant to be used with https://github.com/kffl/nextcloud-webhooks
+Meant to be used with https://github.com/kffl/nextcloud-webhooks. Configure it as such:
+
+```php
+# config.php
+{
+// ...
+  'webhooks_calendar_object_created_url' => 'http://davjutant-address:80/dav/prune/event',
+  'webhooks_calendar_object_updated_url' => 'http://davjutant-address:80/dav/prune/event'
+// ...
+}
+```
